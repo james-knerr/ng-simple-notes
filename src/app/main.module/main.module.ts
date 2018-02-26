@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../shared.module/shared.module';
 import { MainPageComponent } from './main-page.component/main-page.component';
-import { MainDashboardComponent } from './main-dashboard.component/main-dashboard.component';
 
 import { MainRoutingModule } from './main-routing.module';
 @NgModule({
@@ -9,6 +8,6 @@ import { MainRoutingModule } from './main-routing.module';
     SharedModule,
     MainRoutingModule
   ],
-  declarations: [MainPageComponent, MainDashboardComponent]
+  declarations: [MainPageComponent]
 })
 export class MainModule { }

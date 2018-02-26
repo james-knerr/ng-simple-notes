@@ -6,7 +6,7 @@ const routes: Routes = [
         loadChildren: './main.module/main.module#MainModule',
         data: {
             menuItem: 'Home',
-            title: 'Vending Machine Simulator'
+            title: 'Notes'
         }
     }
 ];
