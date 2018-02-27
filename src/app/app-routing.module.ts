@@ -5,7 +5,6 @@ const routes: Routes = [
         path: '',
         loadChildren: './main.module/main.module#MainModule',
         data: {
-            menuItem: 'Home',
             title: 'Notes'
         }
     }

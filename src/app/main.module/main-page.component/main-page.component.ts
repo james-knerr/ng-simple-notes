@@ -1,34 +1,38 @@
-import { Component } from '@angular/core';
-import { Router, Event, NavigationEnd, ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { MainService } from '../main.service';
+import { NoteVM } from '../../shared.module/models/note-vm';
 
 @Component({
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.scss']
 })
-export class MainPageComponent {
-  public selectedMenuItem = '';
-  constructor(
-    private _router: Router,
-    private _activatedRoute: ActivatedRoute,
-  ) {
-    this._router.events.subscribe(
-      (event: Event) => {
-        if (event instanceof NavigationEnd) {
-          let currentRoute = this._activatedRoute.root;
-          while (currentRoute.children[0] !== undefined) {
-            currentRoute = currentRoute.children[0];
-          }
-          const data = currentRoute.snapshot.data;
-          this.selectedMenuItem = JSON.parse(JSON.stringify(data)).menuItem;
-        }
-      });
-  }
+export class MainPageComponent implements OnInit {
 
-  public isMenuItemSelected(menuItemName: string): boolean {
-    if (this.selectedMenuItem && this.selectedMenuItem.includes(menuItemName)) {
-      return true;
-    }
-    return false;
+  public notes = new Array<NoteVM>();
+  public selectedNoteId = null;
+
+  constructor(private _mainService: MainService) {}
+
+ngOnInit() {
+  this.getNotes();
+}
+
+private getNotes() {
+  this._mainService.getNotes().subscribe(k => {
+    this.notes = k;
+  });
+}
+
+public deleteNote(event: any, noteId: number) {
+  event.stopPropagation();
+  this.notes[noteId].isDeleted = true;
+  if (this.selectedNoteId === noteId) {
+    this.selectedNoteId = null;
   }
+}
+
+public noteSelected(noteId: number) {
+  this.selectedNoteId = noteId;
+}
 }

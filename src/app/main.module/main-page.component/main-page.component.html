@@ -1,7 +1,22 @@
 <mat-toolbar class="nav-toolbar" color="primary">
    <span>Notes</span>
+   <span style="flex: 1 1 auto;"></span>
+   <span>
+    <button matTooltip="Add Note" matTooltipPosition="left" mat-icon-button>
+      <mat-icon>add_circle</mat-icon>
+    </button>
+  </span>
 </mat-toolbar>
-<mat-sidenav-container>
-        <mat-sidenav mode="side" open="true">Start</mat-sidenav>
-        <mat-sidenav-content>Main</mat-sidenav-content>
-      </mat-sidenav-container>
+<mat-drawer-container>
+  <mat-drawer mode="side" opened="true">
+    <mat-list>
+      <mat-list-item *ngFor="let note of notes | deleteFilter" [disableRipple]="false" (click)="noteSelected(note.id)">
+        <h3 matLine> {{note.text && note.text.length > 15 ? note.text.substring(0,15) + '...' : note.text}} </h3>
+        <button mat-icon-button (click)="deleteNote($event, note.id)">
+          <mat-icon class="light">delete</mat-icon>
+       </button>
+      </mat-list-item>
+    </mat-list>
+  </mat-drawer>
+  <mat-drawer-content style="padding: 24px;">{{notes && notes.length > 0 && selectedNoteId !== null ? notes[selectedNoteId].text : ''}}</mat-drawer-content>
+</mat-drawer-container>

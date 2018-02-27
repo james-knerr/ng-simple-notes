@@ -6,15 +6,18 @@ export class AppDataService implements InMemoryDbService {
     createDb() {
         const NOTES = [{
             'id': 0,
-            'text': 'eweghwehe'
+            'text': 'eweghwehe',
+             'isDeleted': false
         },
         {
             'id': 1,
-            'text': 'wehwehwehewh'
+            'text': 'wehwehwehewh',
+            'isDeleted': false
         },
         {
             'id': 2,
-            'text': 'wherhwrehwhherh'
+            'text': 'wherhwrehwh235352235235herh',
+            'isDeleted': false
         },
     ];
 

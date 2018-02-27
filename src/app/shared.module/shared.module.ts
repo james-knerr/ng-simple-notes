@@ -3,8 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
-import { TextMaskModule } from 'angular2-text-mask';
-
 import { MaterialModule } from './material.module/material.module';
 
 @NgModule({
@@ -12,8 +10,7 @@ import { MaterialModule } from './material.module/material.module';
     CommonModule,
     FormsModule,
     FlexLayoutModule,
-    MaterialModule,
-    TextMaskModule
+    MaterialModule
   ],
   declarations: [
   ],
@@ -21,8 +18,7 @@ import { MaterialModule } from './material.module/material.module';
     CommonModule,
     FormsModule,
     FlexLayoutModule,
-    MaterialModule,
-    TextMaskModule
+    MaterialModule
   ]
 })
 export class SharedModule { }

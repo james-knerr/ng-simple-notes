@@ -1,4 +1,5 @@
 export class NoteVM {
-    public id: string;
+    public id: number;
     public text: string;
+    public isDeleted: boolean;
 }
